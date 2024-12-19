@@ -1,0 +1,23 @@
+{
+  "$schema": "https://nitro.margelo.com/nitro.schema.json",
+  "cxxNamespace": [
+    "tokenexchanger"
+  ],
+  "ios": {
+    "iosModuleName": "NitroTokenExchanger"
+  },
+  "android": {
+    "androidNamespace": [
+      "tokenexchanger"
+    ],
+    "androidCxxLibName": "NitroTokenExchanger"
+  },
+  "autolinking": {
+    "ExchangerModule": {
+      "swift": "HybridExchangerModule"
+    }
+  },
+  "ignorePaths": [
+    "**/node_modules"
+  ]
+}
