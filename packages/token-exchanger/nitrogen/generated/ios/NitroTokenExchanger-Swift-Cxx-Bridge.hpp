@@ -60,6 +60,7 @@ namespace margelo::nitro::tokenexchanger::bridge::swift {
   inline Func_void_std__string create_Func_void_std__string(void* _Nonnull closureHolder, void(* _Nonnull call)(void* _Nonnull /* closureHolder */, std::string), void(* _Nonnull destroy)(void* _Nonnull)) {
     std::shared_ptr<void> sharedClosureHolder(closureHolder, destroy);
     return Func_void_std__string([sharedClosureHolder, call](const std::string& result) -> void {
+      new std::shared_ptr<void>(sharedClosureHolder);
       call(sharedClosureHolder.get(), result);
     });
   }
@@ -88,6 +89,7 @@ namespace margelo::nitro::tokenexchanger::bridge::swift {
   inline Func_void_std__exception_ptr create_Func_void_std__exception_ptr(void* _Nonnull closureHolder, void(* _Nonnull call)(void* _Nonnull /* closureHolder */, std::exception_ptr), void(* _Nonnull destroy)(void* _Nonnull)) {
     std::shared_ptr<void> sharedClosureHolder(closureHolder, destroy);
     return Func_void_std__exception_ptr([sharedClosureHolder, call](const std::exception_ptr& error) -> void {
+      new std::shared_ptr<void>(sharedClosureHolder);
       call(sharedClosureHolder.get(), error);
     });
   }
@@ -109,6 +111,7 @@ namespace margelo::nitro::tokenexchanger::bridge::swift {
     explicit Func_std__shared_ptr_Promise_std__shared_ptr_Promise_std__string_____std__string_Wrapper(std::function<std::shared_ptr<Promise<std::shared_ptr<Promise<std::string>>>>(const std::string& /* setupToken */)>&& func): _function(std::move(func)) {}
     inline std::shared_ptr<Promise<std::shared_ptr<Promise<std::string>>>> call(std::string setupToken) const {
       auto __result = _function(setupToken);
+      new std::shared_ptr<Promise<std::shared_ptr<Promise<std::string>>>>(__result);
       return __result;
     }
   private:
@@ -118,6 +121,7 @@ namespace margelo::nitro::tokenexchanger::bridge::swift {
     std::shared_ptr<void> sharedClosureHolder(closureHolder, destroy);
     return Func_std__shared_ptr_Promise_std__shared_ptr_Promise_std__string_____std__string([sharedClosureHolder, call](const std::string& setupToken) -> std::shared_ptr<Promise<std::shared_ptr<Promise<std::string>>>> {
       auto __result = call(sharedClosureHolder.get(), setupToken);
+      new std::shared_ptr<Promise<std::shared_ptr<Promise<std::string>>>>(__result);
       return __result;
     });
   }
