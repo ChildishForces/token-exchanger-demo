@@ -1,11 +1,19 @@
 import { Button, StyleSheet, View } from 'react-native';
 import { TokenExchanger } from 'react-native-token-exchanger';
 import { ThemedText } from '@/src/components/ThemedText';
+import { isError } from "@/src/utilities/isError";
+import {useRef, useState} from "react";
 
 export default function TabTwoScreen() {
+  // Refs
+  const iterations = useRef<number>(0);
+
   // Methods
   const registerTokenExchanger = () => TokenExchanger.registerTokenExchanger(
-    async (setupToken: string) => setupToken.toLowerCase(),
+    async (setupToken: string) => {
+      iterations.current += 1;
+      return `${setupToken.toLowerCase()}-${iterations.current}`;
+    },
   );
 
   const testTokenExchanger = async () => {
@@ -13,6 +21,7 @@ export default function TabTwoScreen() {
       const value = await TokenExchanger.testTokenExchanger();
       console.log('Value:', value);
     } catch (error) {
+      if (!isError(error)) return;
       console.error('Error:', error.message);
     }
   }

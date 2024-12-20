@@ -13,6 +13,39 @@
 
 namespace margelo::nitro::tokenexchanger::bridge::swift {
 
+  // pragma MARK: std::function<void(const std::string& /* result */)>
+  Func_void_std__string create_Func_void_std__string(void* _Nonnull swiftClosureWrapper) {
+    auto swiftClosure = NitroTokenExchanger::Func_void_std__string::fromUnsafe(swiftClosureWrapper);
+    return [swiftClosure = std::move(swiftClosure)](const std::string& result) mutable -> void {
+      swiftClosure.call(result);
+    };
+  }
+  
+  // pragma MARK: std::function<void(const std::exception_ptr& /* error */)>
+  Func_void_std__exception_ptr create_Func_void_std__exception_ptr(void* _Nonnull swiftClosureWrapper) {
+    auto swiftClosure = NitroTokenExchanger::Func_void_std__exception_ptr::fromUnsafe(swiftClosureWrapper);
+    return [swiftClosure = std::move(swiftClosure)](const std::exception_ptr& error) mutable -> void {
+      swiftClosure.call(error);
+    };
+  }
+  
+  // pragma MARK: std::function<std::shared_ptr<Promise<std::shared_ptr<Promise<std::string>>>>(const std::string& /* setupToken */)>
+  Func_std__shared_ptr_Promise_std__shared_ptr_Promise_std__string_____std__string create_Func_std__shared_ptr_Promise_std__shared_ptr_Promise_std__string_____std__string(void* _Nonnull swiftClosureWrapper) {
+    auto swiftClosure = NitroTokenExchanger::Func_std__shared_ptr_Promise_std__shared_ptr_Promise_std__string_____std__string::fromUnsafe(swiftClosureWrapper);
+    return [swiftClosure = std::move(swiftClosure)](const std::string& setupToken) mutable -> std::shared_ptr<Promise<std::shared_ptr<Promise<std::string>>>> {
+      auto __result = swiftClosure.call(setupToken);
+      return __result;
+    };
+  }
+  
+  // pragma MARK: std::function<void(const std::shared_ptr<Promise<std::string>>& /* result */)>
+  Func_void_std__shared_ptr_Promise_std__string__ create_Func_void_std__shared_ptr_Promise_std__string__(void* _Nonnull swiftClosureWrapper) {
+    auto swiftClosure = NitroTokenExchanger::Func_void_std__shared_ptr_Promise_std__string__::fromUnsafe(swiftClosureWrapper);
+    return [swiftClosure = std::move(swiftClosure)](const std::shared_ptr<Promise<std::string>>& result) mutable -> void {
+      swiftClosure.call(result);
+    };
+  }
+  
   // pragma MARK: std::shared_ptr<margelo::nitro::tokenexchanger::HybridExchangerModuleSpec>
   std::shared_ptr<margelo::nitro::tokenexchanger::HybridExchangerModuleSpec> create_std__shared_ptr_margelo__nitro__tokenexchanger__HybridExchangerModuleSpec_(void* _Nonnull swiftUnsafePointer) {
     NitroTokenExchanger::HybridExchangerModuleSpec_cxx swiftPart = NitroTokenExchanger::HybridExchangerModuleSpec_cxx::fromUnsafe(swiftUnsafePointer);

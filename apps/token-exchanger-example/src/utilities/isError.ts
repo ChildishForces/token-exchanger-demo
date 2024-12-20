@@ -1,0 +1,1 @@
+export const isError = (maybeError: unknown) => maybeError instanceof Error;

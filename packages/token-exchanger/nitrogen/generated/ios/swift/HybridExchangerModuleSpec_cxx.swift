@@ -104,9 +104,9 @@ public class HybridExchangerModuleSpec_cxx {
   public func registerTokenExchanger(tokenExchanger: bridge.Func_std__shared_ptr_Promise_std__shared_ptr_Promise_std__string_____std__string) -> bridge.Result_void_ {
     do {
       try self.__implementation.registerTokenExchanger(tokenExchanger: { () -> ((String) -> Promise<Promise<String>>) in
-        let __sharedClosure = bridge.share_Func_std__shared_ptr_Promise_std__shared_ptr_Promise_std__string_____std__string(tokenExchanger)
+        let __wrappedFunction = bridge.wrap_Func_std__shared_ptr_Promise_std__shared_ptr_Promise_std__string_____std__string(tokenExchanger)
         return { (__setupToken: String) -> Promise<Promise<String>> in
-          let __result = __sharedClosure.pointee.call(std.string(__setupToken))
+          let __result = __wrappedFunction.call(std.string(__setupToken))
           return { () -> Promise<Promise<String>> in
             let __promise = Promise<Promise<String>>()
             let __resolver = { (__result: Promise<String>) in
@@ -116,106 +116,16 @@ public class HybridExchangerModuleSpec_cxx {
               __promise.reject(withError: __error)
             }
             let __resolverCpp = { () -> bridge.Func_void_std__shared_ptr_Promise_std__string__ in
-              final class ClosureHolder {
-                let closure: ((_ result: Promise<String>) -> Void)
-                init(wrappingClosure closure: @escaping ((_ result: Promise<String>) -> Void)) {
-                  self.closure = closure
-                }
-                func invoke(_ __result: Promise<String>) {
-                  self.closure(__result)
-                }
-              }
-            
-              let __closureHolder = Unmanaged.passRetained(ClosureHolder(wrappingClosure: __resolver)).toOpaque()
-              func __callClosure(__closureHolder: UnsafeMutableRawPointer, __result: bridge.std__shared_ptr_Promise_std__string__) -> Void {
-                let closure = Unmanaged<ClosureHolder>.fromOpaque(__closureHolder).takeUnretainedValue()
-                closure.invoke({ () -> Promise<String> in
-                  let __promise = Promise<String>()
-                  let __resolver = { (__result: String) in
-                    __promise.resolve(withResult: __result)
-                  }
-                  let __rejecter = { (__error: Error) in
-                    __promise.reject(withError: __error)
-                  }
-                  let __resolverCpp = { () -> bridge.Func_void_std__string in
-                    final class ClosureHolder {
-                      let closure: ((_ result: String) -> Void)
-                      init(wrappingClosure closure: @escaping ((_ result: String) -> Void)) {
-                        self.closure = closure
-                      }
-                      func invoke(_ __result: String) {
-                        self.closure(__result)
-                      }
-                    }
-                  
-                    let __closureHolder = Unmanaged.passRetained(ClosureHolder(wrappingClosure: __resolver)).toOpaque()
-                    func __callClosure(__closureHolder: UnsafeMutableRawPointer, __result: std.string) -> Void {
-                      let closure = Unmanaged<ClosureHolder>.fromOpaque(__closureHolder).takeUnretainedValue()
-                      closure.invoke(String(__result))
-                    }
-                    func __destroyClosure(_ __closureHolder: UnsafeMutableRawPointer) -> Void {
-                      Unmanaged<ClosureHolder>.fromOpaque(__closureHolder).release()
-                    }
-                  
-                    return bridge.create_Func_void_std__string(__closureHolder, __callClosure, __destroyClosure)
-                  }()
-                  let __rejecterCpp = { () -> bridge.Func_void_std__exception_ptr in
-                    final class ClosureHolder {
-                      let closure: ((_ error: Error) -> Void)
-                      init(wrappingClosure closure: @escaping ((_ error: Error) -> Void)) {
-                        self.closure = closure
-                      }
-                      func invoke(_ __error: Error) {
-                        self.closure(__error)
-                      }
-                    }
-                  
-                    let __closureHolder = Unmanaged.passRetained(ClosureHolder(wrappingClosure: __rejecter)).toOpaque()
-                    func __callClosure(__closureHolder: UnsafeMutableRawPointer, __error: std.exception_ptr) -> Void {
-                      let closure = Unmanaged<ClosureHolder>.fromOpaque(__closureHolder).takeUnretainedValue()
-                      closure.invoke(RuntimeError.from(cppError: __error))
-                    }
-                    func __destroyClosure(_ __closureHolder: UnsafeMutableRawPointer) -> Void {
-                      Unmanaged<ClosureHolder>.fromOpaque(__closureHolder).release()
-                    }
-                  
-                    return bridge.create_Func_void_std__exception_ptr(__closureHolder, __callClosure, __destroyClosure)
-                  }()
-                  __result.pointee.addOnResolvedListener(__resolverCpp)
-                  __result.pointee.addOnRejectedListener(__rejecterCpp)
-                  return __promise
-                }())
-              }
-              func __destroyClosure(_ __closureHolder: UnsafeMutableRawPointer) -> Void {
-                Unmanaged<ClosureHolder>.fromOpaque(__closureHolder).release()
-              }
-            
-              return bridge.create_Func_void_std__shared_ptr_Promise_std__string__(__closureHolder, __callClosure, __destroyClosure)
+              let __closureWrapper = Func_void_std__shared_ptr_Promise_std__string__(__resolver)
+              return bridge.create_Func_void_std__shared_ptr_Promise_std__string__(__closureWrapper.toUnsafe())
             }()
             let __rejecterCpp = { () -> bridge.Func_void_std__exception_ptr in
-              final class ClosureHolder {
-                let closure: ((_ error: Error) -> Void)
-                init(wrappingClosure closure: @escaping ((_ error: Error) -> Void)) {
-                  self.closure = closure
-                }
-                func invoke(_ __error: Error) {
-                  self.closure(__error)
-                }
-              }
-            
-              let __closureHolder = Unmanaged.passRetained(ClosureHolder(wrappingClosure: __rejecter)).toOpaque()
-              func __callClosure(__closureHolder: UnsafeMutableRawPointer, __error: std.exception_ptr) -> Void {
-                let closure = Unmanaged<ClosureHolder>.fromOpaque(__closureHolder).takeUnretainedValue()
-                closure.invoke(RuntimeError.from(cppError: __error))
-              }
-              func __destroyClosure(_ __closureHolder: UnsafeMutableRawPointer) -> Void {
-                Unmanaged<ClosureHolder>.fromOpaque(__closureHolder).release()
-              }
-            
-              return bridge.create_Func_void_std__exception_ptr(__closureHolder, __callClosure, __destroyClosure)
+              let __closureWrapper = Func_void_std__exception_ptr(__rejecter)
+              return bridge.create_Func_void_std__exception_ptr(__closureWrapper.toUnsafe())
             }()
-            __result.pointee.addOnResolvedListener(__resolverCpp)
-            __result.pointee.addOnRejectedListener(__rejecterCpp)
+            let __promiseHolder = bridge.wrap_std__shared_ptr_Promise_std__shared_ptr_Promise_std__string____(__result)
+            __promiseHolder.addOnResolvedListener(__resolverCpp)
+            __promiseHolder.addOnRejectedListener(__rejecterCpp)
             return __promise
           }()
         }
@@ -233,9 +143,10 @@ public class HybridExchangerModuleSpec_cxx {
       let __result = try self.__implementation.testTokenExchanger()
       let __resultCpp = { () -> bridge.std__shared_ptr_Promise_std__string__ in
         let __promise = bridge.create_std__shared_ptr_Promise_std__string__()
+        let __promiseHolder = bridge.wrap_std__shared_ptr_Promise_std__string__(__promise)
         __result
-          .then({ __result in __promise.pointee.resolve(std.string(__result)) })
-          .catch({ __error in __promise.pointee.reject(__error.toCpp()) })
+          .then({ __result in __promiseHolder.resolve(std.string(__result)) })
+          .catch({ __error in __promiseHolder.reject(__error.toCpp()) })
         return __promise
       }()
       return bridge.create_Result_std__shared_ptr_Promise_std__string___(__resultCpp)
